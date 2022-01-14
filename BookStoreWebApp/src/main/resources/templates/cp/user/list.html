@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>List of Users</title>
+    <link href="/cp/assets/libs/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css">
+    <link href="/cp/assets/libs/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css">
+    <link href="/cp/assets/libs/datatables/buttons.bootstrap4.css" rel="stylesheet" type="text/css">
+    <link href="/cp/assets/libs/datatables/select.bootstrap4.css" rel="stylesheet" type="text/css">
+    <th:block th:replace="/cp/layout/head"/>
+</head>
+
+<body>
+
+<!-- Begin page -->
+<div id="wrapper">
+
+    <!-- Topbar Start -->
+    <th:block th:replace="/cp/layout/top-bar"/>
+    <!-- end Topbar -->
+
+    <!-- ========== Left Sidebar Start ========== -->
+    <th:block th:replace="/cp/layout/left-side-menu"/>
+    <!-- Left Sidebar End -->
+
+    <!-- ============================================================== -->
+    <!-- Start Page Content here -->
+    <!-- ============================================================== -->
+
+    <div class="content-page">
+        <div class="content">
+
+            <!-- Start Content-->
+            <div class="container-fluid">
+
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Minton</a></li>
+                                    <li class="breadcrumb-item active">Dashboard</li>
+                                </ol>
+                            </div>
+                            <h4 class="page-title">User list</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card-box">
+                            <a href="/cp/users/create">
+                                <button class="btn btn-success waves-effect waves-light">
+                                    <i class="fas fa-plus-circle"></i> Add new
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <table id="scroll-horizontal-datatable" class="table w-100 nowrap">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Username</th>
+                                        <th>Role</th>
+<!--                                        <th class="text-center">Edit</th>-->
+                                        <th class="text-center">Delete</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <th:block th:each="item : ${userList}">
+                                        <tr>
+                                            <td th:text="${item.id}"></td>
+                                            <td th:text="${item.username}"></td>
+                                            <td th:text="${item.role.code}"></td>
+<!--                                            <td class="text-center">-->
+<!--                                                <a class="btn btn-outline-secondary" th:href="@{/cp/category-groups/edit/__${item.id}__ }">-->
+<!--                                                    <i class="fas fa-pencil-alt"></i>-->
+<!--                                                </a>-->
+<!--                                            </td>-->
+                                            <td class="text-center">
+                                                <a class="btn btn-outline-danger" th:href="@{/category-groups/delete/__${item.id}__ }">
+                                                    <i class="far fa-trash-alt"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </th:block>
+                                    </tbody>
+                                </table>
+
+                            </div> <!-- end card body-->
+                        </div> <!-- end card -->
+                    </div><!-- end col-->
+                </div>
+
+            </div> <!-- container -->
+
+        </div> <!-- content -->
+
+        <!-- Footer Start -->
+        <th:block th:replace="/cp/layout/footer"/>
+        <!-- end Footer -->
+
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- End Page content -->
+    <!-- ============================================================== -->
+
+
+</div>
+<!-- END wrapper -->
+
+<!-- Right Sidebar -->
+<th:block th:replace="/cp/layout/right-bar"/>
+<!-- /Right-bar -->
+
+<!-- Right bar overlay-->
+<div class="rightbar-overlay"></div>
+
+<!--<th:block th:replace="/cp/layout/script"/>-->
+
+<!-- Vendor js -->
+<script src="/cp/assets/js/vendor.min.js"></script>
+
+<!-- third party js -->
+<script src="/cp/assets/libs/datatables/jquery.dataTables.min.js"></script>
+<script src="/cp/assets/libs/datatables/dataTables.bootstrap4.js"></script>
+<script src="/cp/assets/libs/datatables/dataTables.responsive.min.js"></script>
+<script src="/cp/assets/libs/datatables/responsive.bootstrap4.min.js"></script>
+<script src="/cp/assets/libs/datatables/dataTables.buttons.min.js"></script>
+<script src="/cp/assets/libs/datatables/buttons.bootstrap4.min.js"></script>
+<script src="/cp/assets/libs/datatables/buttons.html5.min.js"></script>
+<script src="/cp/assets/libs/datatables/buttons.flash.min.js"></script>
+<script src="/cp/assets/libs/datatables/buttons.print.min.js"></script>
+<script src="/cp/assets/libs/datatables/dataTables.keyTable.min.js"></script>
+<script src="/cp/assets/libs/datatables/dataTables.select.min.js"></script>
+<script src="/cp/assets/libs/pdfmake/pdfmake.min.js"></script>
+<script src="/cp/assets/libs/pdfmake/vfs_fonts.js"></script>
+<!-- third party js ends -->
+
+<!-- Datatables init -->
+<script src="/cp/assets/js/pages/datatables.init.js"></script>
+
+<!-- App js -->
+<script src="/cp/assets/js/app.min.js"></script>
+
+<script src="/cp/assets/js/cp-app.js"></script>
+
+<script>
+
+    let page = {
+        urls: {
+            getAllCategories: App.BASE_URL_CATEGORY
+        }
+    }
+
+    $(function () {
+        // $.ajax({
+        //     type: "GET",
+        //     url: page.urls.getAllCategories
+        // }).done((resp) => {
+        //     $.each(resp, (index, item) => {
+        //         $("#scroll-horizontal-datatable tbody").append(`
+        //             <tr>
+        //                 <td>${item.id}</td>
+        //                 <td>${item.name}</td>
+        //                 <td>Edit</td>
+        //                 <td>Delete</td>
+        //             </tr>
+        //         `);
+        //     });
+        // }).fail(function() {
+        //     App.showErrorAlert("An error occurred. Please try again later !");
+        // });
+    });
+
+</script>
+
+</body>
+</html>

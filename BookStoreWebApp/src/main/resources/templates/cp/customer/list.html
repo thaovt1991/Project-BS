@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Customer-Manager</title>
+    <link href="/cp/assets/libs/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css">
+    <link href="/cp/assets/libs/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css">
+    <link href="/cp/assets/libs/datatables/buttons.bootstrap4.css" rel="stylesheet" type="text/css">
+    <link href="/cp/assets/libs/datatables/select.bootstrap4.css" rel="stylesheet" type="text/css">
+    <link href="/cp/assets/libs/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+    <link href="/cp/assets/libs/switchery/switchery.min.css" rel="stylesheet" type="text/css">
+    <link href="/cp/assets/libs/multiselect/multi-select.css" rel="stylesheet" type="text/css">
+    <link href="/cp/assets/libs/select2/select2.min.css" rel="stylesheet" type="text/css">
+    <link href="/cp/assets/libs/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" type="text/css">
+    <link href="/cp/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet">
+    <link href="/cp/assets/css/errors.css" rel="stylesheet" type="text/css">
+    <th:block th:replace="/cp/layout/head"/>
+</head>
+
+<body>
+<div id="wrapper">
+    <th:block th:replace="/cp/layout/top-bar"/>
+    <th:block th:replace="/cp/layout/left-side-menu"/>
+
+    <div class="content-page">
+        <div class="content">
+
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">MainMenu</a></li>
+                                    <li class="breadcrumb-item active">Customer-List</li>
+                                </ol>
+                            </div>
+                            <h4 class="page-title">List Of Customer</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <table id="scroll-horizontal-datatable" class="table w-100 nowrap">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Address</th>
+                                        <th>Phone</th>
+                                        <th>Email</th>
+                                        <th>Status</th>
+                                        <th class="text-center">Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <th:block th:each="item : ${customers}">
+                                        <tr>
+                                            <td th:text="${item.getId()}"></td>
+                                            <td th:text="${item.getName()}"></td>
+                                            <td th:text="${item.getAddress()}"></td>
+                                            <td th:text="${item.getPhone()}"></td>
+                                            <td th:text="${item.getEmail()}"></td>
+
+                                            <th:block th:if="!${item.deleted}">
+                                                <td>Active</td>
+                                                <td class="text-center">
+                                                    <a class="btn btn-outline-danger" th:href="@{/cp/customers/change-active/__${item.getId()}__ }">
+                                                        <i class="fas fa-user-times"></i>
+                                                    </a>
+                                                </td>
+                                            </th:block>
+
+                                            <th:block th:if="${item.deleted}">
+                                                <td>Disable</td>
+                                                <td class="text-center">
+                                                    <a class="btn btn-outline-success" th:href="@{/cp/customers/change-active/__${item.getId()}__ }">
+                                                        <i class="fas fa-user-check"></i>
+                                                    </a>
+                                                </td>
+                                            </th:block>
+                                        </tr>
+                                    </th:block>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <th:block th:replace="/cp/layout/footer"/>
+    </div>
+
+</div>
+
+<th:block th:replace="/cp/layout/right-bar"/>
+
+<div class="rightbar-overlay"></div>
+
+<script src="/cp/assets/js/vendor.min.js"></script>
+<script src="/cp/assets/libs/datatables/jquery.dataTables.min.js"></script>
+<script src="/cp/assets/libs/datatables/dataTables.bootstrap4.js"></script>
+<script src="/cp/assets/libs/datatables/dataTables.responsive.min.js"></script>
+<script src="/cp/assets/libs/datatables/responsive.bootstrap4.min.js"></script>
+<script src="/cp/assets/libs/datatables/dataTables.buttons.min.js"></script>
+<script src="/cp/assets/libs/datatables/buttons.bootstrap4.min.js"></script>
+<script src="/cp/assets/libs/datatables/buttons.html5.min.js"></script>
+<script src="/cp/assets/libs/datatables/buttons.flash.min.js"></script>
+<script src="/cp/assets/libs/datatables/buttons.print.min.js"></script>
+<script src="/cp/assets/libs/datatables/dataTables.keyTable.min.js"></script>
+<script src="/cp/assets/libs/datatables/dataTables.select.min.js"></script>
+<script src="/cp/assets/libs/pdfmake/pdfmake.min.js"></script>
+<script src="/cp/assets/libs/pdfmake/vfs_fonts.js"></script>
+<script src="/cp/assets/js/pages/datatables.init.js"></script>
+<script src="/cp/assets/js/app.min.js"></script>
+<script src="/cp/assets/js/cp-app.js"></script>
+<script src="/cp/assets/libs/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
+<script src="/cp/assets/libs/switchery/switchery.min.js"></script>
+<script src="/cp/assets/libs/multiselect/jquery.multi-select.js"></script>
+<script src="/cp/assets/libs/jquery-quicksearch/jquery.quicksearch.min.js"></script>
+<script src="/cp/assets/libs/select2/select2.min.js"></script>
+<script src="/cp/assets/libs/bootstrap-select/bootstrap-select.min.js"></script>
+<script src="/cp/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
+<script src="/cp/assets/libs/jquery-mask-plugin/jquery.mask.min.js"></script>
+<script src="/cp/assets/js/pages/form-advanced.init.js"></script>
+
+<div class="footer-error">
+    <div id="message-alert">
+        <th:block th:if="${success}">
+            <div class="alert-success">
+                <h5><span th:text="${success}"></span></h5>
+            </div>
+            <i class="far fa-times-circle" id = "close"></i>
+            <script th:inline="javascript">
+                $("#close").on("click", function () {
+                    $(".footer-error").css("height", 0);
+                    $("#message-alert").empty();
+                });
+
+                $(".alert-success").fadeTo(5000, 500).fadeOut(1000, function () {
+                    $(".footer-error").css("height", 0);
+                    $("#message-alert").empty();
+                });
+            </script>
+        </th:block>
+    </div>
+</div>
+
+</body>
+</html>

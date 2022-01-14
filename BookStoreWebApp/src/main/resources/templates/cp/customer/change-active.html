@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Change-Customer-Activation</title>
+    <th:block th:replace="/cp/layout/head"/>
+    <style>
+        .form-col {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="wrapper">
+    <th:block th:replace="/cp/layout/top-bar"/>
+    <th:block th:replace="/cp/layout/left-side-menu"/>
+
+    <div class="content-page">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
+                                    <li class="breadcrumb-item active">Change Activation</li>
+                                </ol>
+                            </div>
+                            <h4 class="page-title">Change Customer Activation</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card-box">
+                            <a href="..">
+                                <button class="btn btn-success waves-effect waves-light">
+                                    <i class="fas fa-arrow-alt-circle-left"></i> Back to list
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card-box">
+                            <h4 class="header-title">Customer information</h4>
+                            <div class="card-body">
+                                <form class="row g-3" method="post">
+                                    <div class="col-md-6 form-col">
+                                        <label for="validationDefault01" class="form-label">Name</label>
+                                        <input type="text" class="form-control" id="validationDefault01" th:value="${customer.getName()}" name = "name" readonly>
+                                    </div>
+                                    <div class="col-md-6 form-col">
+                                        <label for="validationDefault02" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="validationDefault02" th:value="${customer.getEmail()}" name = "email" readonly>
+                                    </div>
+
+                                    <div class="col-md-6 form-col">
+                                        <label for="validationDefault03" class="form-label">Address</label>
+                                        <input type="text" class="form-control" id="validationDefault03" th:value="${customer.getAddress()}" name = "address" readonly>
+                                    </div>
+                                    <div class="col-md-6 form-col">
+                                        <label for="validationDefault04" class="form-label">Phone</label>
+                                        <input type="number" class="form-control" id="validationDefault04" th:value="${customer.getPhone()}" name = "phone" readonly>
+                                    </div>
+
+                                    <th:block th:if="!${customer.deleted}">
+                                        <div class="col-md-12">
+                                            <button class="btn btn-outline-danger" type="submit">
+                                                <i class="fas fa-user-times"></i>
+                                                Confirm Disable Customer
+                                            </button>
+                                        </div>
+                                    </th:block>
+
+                                    <th:block th:if="${customer.deleted}">
+                                        <div class="col-md-12">
+                                            <button class="btn btn-outline-success" type="submit">
+                                                <i class="fas fa-user-check"></i>
+                                                Confirm Activation Customer
+                                            </button>
+                                        </div>
+                                    </th:block>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <th:block th:replace="/cp/layout/footer"/>
+    </div>
+</div>
+<th:block th:replace="/cp/layout/right-bar"/>
+<div class="rightbar-overlay"></div>
+<th:block th:replace="/cp/layout/script"/>
+
+</body>
+</html>

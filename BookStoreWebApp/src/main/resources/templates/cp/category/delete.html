@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Update Category</title>
+    <th:block th:replace="/cp/layout/head"/>
+    <link href="/cp/assets/css/errors.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<!-- Begin page -->
+<div id="wrapper">
+
+    <!-- Topbar Start -->
+    <th:block th:replace="/cp/layout/top-bar"/>
+    <!-- end Topbar -->
+
+    <!-- ========== Left Sidebar Start ========== -->
+    <th:block th:replace="/cp/layout/left-side-menu"/>
+    <!-- Left Sidebar End -->
+
+    <!-- ============================================================== -->
+    <!-- Start Page Content here -->
+    <!-- ============================================================== -->
+
+    <div class="content-page">
+        <div class="content">
+
+            <!-- Start Content-->
+            <div class="container-fluid">
+
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="/cp">MainMenu</a></li>
+                                    <li class="breadcrumb-item active">Category</li>
+                                </ol>
+                            </div>
+                            <h4 class="page-title">Delete Category</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card-box">
+                            <a href="..">
+                                <button class="btn btn-success waves-effect waves-light">
+                                    <i class="fas fa-arrow-alt-circle-left"></i> Back to list
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card-box">
+                            <h4 class="header-title">Category information</h4>
+
+                            <form th:object="${category}" method="post">
+                                <div class="form-group">
+                                    <label class="col-form-label">Name</label>
+                                    <input type="text" th:field="*{name}" class="form-control" readonly>
+                                </div>
+
+                                <th:block th:if="*{deleted == false}">
+                                    <div class="col-md-12">
+                                        <button type="submit" class="btn btn-primary mt-3">
+                                            <i class="fas fa-pencil-alt"></i> Delete
+                                        </button>
+                                    </div>
+                                </th:block>
+
+<!--                                <th:block th:if="${error}">-->
+<!--                                    <div class="col-md-12">-->
+<!--                                        <button type="submit" class="btn btn-primary mt-3">-->
+<!--                                            <i class="fas fa-pencil-alt"></i> Delete-->
+<!--                                        </button>-->
+<!--                                    </div>-->
+<!--                                </th:block>-->
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!-- container -->
+
+        </div> <!-- content -->
+
+        <!-- Footer Start -->
+        <th:block th:replace="/cp/layout/footer"/>
+        <!-- end Footer -->
+
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- End Page content -->
+    <!-- ============================================================== -->
+
+
+</div>
+<!-- END wrapper -->
+
+<!-- Right Sidebar -->
+<th:block th:replace="/cp/layout/right-bar"/>
+<!-- /Right-bar -->
+
+<!-- Right bar overlay-->
+<div class="rightbar-overlay"></div>
+
+<th:block th:replace="/cp/layout/script"/>
+
+<div class="footer-error">
+    <div id="message-alert">
+        <th:block th:if="${script} == true">
+            <div class="alert-danger">
+                <h5>Please correct errors below:</h5>
+                <ul>
+                    <li th:each="err : ${#fields.errors('category.*')}" th:text="${err}"></li>
+                </ul>
+            </div>
+        </th:block>
+        <th:block th:if="${success}">
+            <div class="alert-success">
+                <h5><span th:text="${success}"></span></h5>
+            </div>
+            <span id="close">X</span>
+            <script th:inline="javascript">
+                $("#close").on("click", function () {
+                    $(".footer-error").css("height", 0);
+                    $("#message-alert").empty();
+                });
+
+                $(".alert-success").fadeTo(5000, 500).fadeOut(1000, function () {
+                    $(".footer-error").css("height", 0);
+                    $("#message-alert").empty();
+                });
+            </script>
+        </th:block>
+        <th:block th:if="${error}">
+            <div class="alert-danger">
+                <ul>
+                    <li th:text="${error}"></li>
+                </ul>
+            </div>
+        </th:block>
+    </div>
+</div>
+
+</body>
+</html>

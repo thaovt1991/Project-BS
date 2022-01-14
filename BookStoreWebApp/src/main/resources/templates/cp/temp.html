@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Admin DashBoard</title>
+    <th:block th:replace="/cp/layout/head"/>
+</head>
+
+<body>
+
+<div id="wrapper">
+    <th:block th:replace="/cp/layout/top-bar"/>
+    <th:block th:replace="/cp/layout/left-side-menu"/>
+
+    <div class="content-page">
+        <div class="content">
+
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">MainMenu</a></li>
+                                </ol>
+                            </div>
+                            <h4 class="page-title">Welcome !</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card-box">
+                            <div class="float-left" dir="ltr">
+                                <input data-plugin="knob" data-width="70" data-height="70" data-fgcolor="#7266ba" data-bgcolor="#ebeff2" value="12" data-skin="tron" data-angleoffset="0" data-readonly="true" data-thickness=".15">
+                                <!--                                value la ty le khach hang moi dang ki trong ngay chia cho tong so luong khach hang dang ki trong thang-->
+                            </div>
+                            <div class="text-right">
+                                <h3 class="mb-1"> 32 </h3>
+                                <!--                                so luong khach hang dang ki trong ngay-->
+                                <p class="text-muted mb-1"> New Customers</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card-box">
+                            <div class="float-left" dir="ltr">
+                                <input data-plugin="knob" data-width="70" data-height="70" data-fgcolor="#f672a7" data-bgcolor="#ebeff2" value="15" data-skin="tron" data-angleoffset="0" data-readonly="true" data-thickness=".15">
+                                <!--                                value la ty le order trong ngay chia cho tong so luong order trong thang-->
+                            </div>
+                            <div class="text-right">
+                                <h3 class="mb-1"> 15 </h3>
+                                <!--                                so luong order moi trong ngay-->
+                                <p class="text-muted mb-1"> New Orders</p>
+                            </div>
+                        </div>
+                    </div><!-- end col -->
+
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card-box">
+                            <div class="float-left" dir="ltr">
+                                <input data-plugin="knob" data-width="70" data-height="70" data-fgcolor="#f672a7" data-bgcolor="#ebeff2" value="98" data-skin="tron" data-angleoffset="0" data-readonly="true" data-thickness=".15">
+                                <!--                                value la ty le confirm order trong ngay/ tong order trong thang-->
+                            </div>
+                            <div class="text-right">
+                                <h3 class="mb-1"> 12 </h3>
+                                <!--                                so luong order dc confirm trong ngay-->
+                                <p class="text-muted mb-1">Confirm Order</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card-box">
+                            <div class="float-left" dir="ltr">
+                                <input data-plugin="knob" data-width="70" data-height="70" data-fgcolor="#7266ba" data-bgcolor="#ebeff2" value="18" data-skin="tron" data-angleoffset="0" data-readonly="true" data-thickness=".15">
+                                <!--                                value la ty le tong doanh thu trong ngay chia cho tong doanh thu trong thang-->
+                            </div>
+                            <div class="text-right">
+                                <h3 class="mb-1"> $92.78 </h3>
+                                <!--                                tong doanh thu trong ngay-->
+                                <p class="text-muted mb-1"> Daily Revenue</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="float-right d-none d-md-inline-block">
+                                    <div class="btn-group mb-2">
+                                        <button type="button" class="btn btn-xs btn-light">Today</button>
+                                        <button type="button" class="btn btn-xs btn-secondary">Weekly</button>
+                                        <button type="button" class="btn btn-xs btn-light">Monthly</button>
+                                    </div>
+                                </div>
+                                <h4 class="header-title">Recent Revenue</h4>
+
+                                <div class="row mt-4 text-center">
+                                    <div class="col-4">
+                                        <p class="text-muted font-15 mb-1 text-truncate">Target</p>
+                                        <h4><i class="fe-arrow-down text-danger mr-1"></i>$7.8k</h4>
+                                    </div>
+                                    <div class="col-4">
+                                        <p class="text-muted font-15 mb-1 text-truncate">Last week</p>
+                                        <h4><i class="fe-arrow-up text-success mr-1"></i>$1.4k</h4>
+                                    </div>
+                                    <div class="col-4">
+                                        <p class="text-muted font-15 mb-1 text-truncate">Last Month</p>
+                                        <h4><i class="fe-arrow-down text-danger mr-1"></i>$15k</h4>
+                                    </div>
+                                </div>
+
+                                <div class="mt-3" dir="ltr">
+                                    <div id="apex-area" class="apex-charts"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="float-right d-none d-md-inline-block">
+                                    <div class="btn-group mb-2">
+                                        <button type="button" class="btn btn-xs btn-secondary">Today</button>
+                                        <button type="button" class="btn btn-xs btn-light">Weekly</button>
+                                        <button type="button" class="btn btn-xs btn-light">Monthly</button>
+                                    </div>
+                                </div>
+                                <h4 class="header-title">Projections Vs Actuals</h4>
+                                <div class="row mt-4 text-center">
+                                    <div class="col-4">
+                                        <p class="text-muted font-15 mb-1 text-truncate">Target</p>
+                                        <h4><i class="fe-arrow-down text-danger mr-1"></i>$3.8k</h4>
+                                    </div>
+                                    <div class="col-4">
+                                        <p class="text-muted font-15 mb-1 text-truncate">Last week</p>
+                                        <h4><i class="fe-arrow-up text-success mr-1"></i>$1.1k</h4>
+                                    </div>
+                                    <div class="col-4">
+                                        <p class="text-muted font-15 mb-1 text-truncate">Last Month</p>
+                                        <h4><i class="fe-arrow-down text-danger mr-1"></i>$25k</h4>
+                                    </div>
+                                </div>
+                                <div class="mt-3" dir="ltr">
+                                    <div id="apex-pie-2" class="apex-charts"></div>
+                                </div>
+                            </div>
+                        </div> <!-- end card-->
+                    </div> <!-- end col -->
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-4">
+                        <div class="card-box">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="avatar-sm bg-primary rounded-circle">
+                                        <i class="fe-aperture avatar-title font-22 text-white"></i>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-right">
+                                        <h3 class="text-dark my-1">$<span data-plugin="counterup">8,145</span></h3>
+                                        <p class="text-muted mb-1 text-truncate">Income Status</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <span data-plugin="peity-bar" data-colors="#7266ba,#ebeff2" data-width="100%" data-height="36">5,3,9,6,5,9,7,3,5,2,9,7,2,1,3,5,2,9,7,2,5,3,9,6,5,9,7</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4">
+                        <div class="card-box">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="avatar-sm bg-pink rounded-circle">
+                                        <i class="fe-users avatar-title font-22 text-white"></i>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-right">
+                                        <h3 class="text-dark my-1"><span data-plugin="counterup">7204</span></h3>
+                                        <p class="text-muted mb-1 text-truncate">Recent Customer</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <span data-plugin="peity-line" data-fill="#f672a7" data-stroke="#f672a7" data-width="100%" data-height="36">3,5,2,9,7,2,5,3,9,6,5,9,7</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4">
+                        <div class="card-box">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="avatar-sm bg-secondary rounded-circle">
+                                        <i class="fe-shopping-bag avatar-title font-22 text-white"></i>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-right">
+                                        <h3 class="text-dark my-1"><span data-plugin="counterup">367</span></h3>
+                                        <p class="text-muted mb-1 text-truncate">Sales Status</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-4 text-center">
+                                <span data-plugin="peity-line" data-fill="#fff" data-stroke="#6c757d" data-width="100%" data-height="36">5,3,9,6,5,9,7,3,5,2</span>
+                            </div>
+                        </div> <!-- end card-box-->
+                    </div> <!-- end col -->
+
+                </div>
+            </div>
+        </div>
+
+        <th:block th:replace="/cp/layout/footer"/>
+
+    </div>
+
+</div>
+
+<th:block th:replace="/cp/layout/right-bar"/>
+<div class="rightbar-overlay"></div>
+
+<th:block th:replace="/cp/layout/script"/>
+
+</body>
+</html>

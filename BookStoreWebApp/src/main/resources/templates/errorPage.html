@@ -1,0 +1,66 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Error Page</title>
+  <link href="/cp/assets/libs/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css">
+  <link href="/cp/assets/libs/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css">
+  <link href="/cp/assets/libs/datatables/buttons.bootstrap4.css" rel="stylesheet" type="text/css">
+  <link href="/cp/assets/libs/datatables/select.bootstrap4.css" rel="stylesheet" type="text/css">
+  <link href="/cp/assets/libs/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+  <link href="/cp/assets/libs/switchery/switchery.min.css" rel="stylesheet" type="text/css">
+  <link href="/cp/assets/libs/multiselect/multi-select.css" rel="stylesheet" type="text/css">
+  <link href="/cp/assets/libs/select2/select2.min.css" rel="stylesheet" type="text/css">
+  <link href="/cp/assets/libs/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" type="text/css">
+  <link href="/cp/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet">
+  <link href="/cp/assets/css/errors.css" rel="stylesheet" type="text/css">
+  <th:block th:replace="/cp/layout/head"/>
+</head>
+<body>
+<div class="container-fluid text-center">
+  <th:block th:switch = "${errorType}">
+    <img th:case="400" src="/assets/image/Error/Error400.png" class="mdi-image-filter-hdr" style="height: 85%; width: 90%">
+    <img th:case="401" src="/assets/image/Error/Error401.png" class="mdi-image-filter-hdr" style="height: 85%; width: 90%">
+    <img th:case="404" src="/assets/image/Error/Error404.png" class="mdi-image-filter-hdr" style="height: 85%; width: 90%">
+    <img th:case="405" src="/assets/image/Error/Error405.png" class="mdi-image-filter-hdr" style="height: 85%; width: 90%">
+    <img th:case="409" src="/assets/image/Error/Error409.png" class="mdi-image-filter-hdr" style="height: 85%; width: 90%">
+    <img th:case="500" src="/assets/image/Error/Error500.png" class="mdi-image-filter-hdr" style="height: 85%; width: 90%">
+  </th:block>
+  <br>
+  <h1 th:text="${errorMsg}"></h1>
+  <button  type="button" class="btn btn-secondary btn-lg" onclick="javascript:history.back()">
+    <i class="fas fa-step-backward"></i>
+    Turn Back
+  </button>
+</div>
+
+
+
+<script src="/cp/assets/js/vendor.min.js"></script>
+<script src="/cp/assets/libs/datatables/jquery.dataTables.min.js"></script>
+<script src="/cp/assets/libs/datatables/dataTables.bootstrap4.js"></script>
+<script src="/cp/assets/libs/datatables/dataTables.responsive.min.js"></script>
+<script src="/cp/assets/libs/datatables/responsive.bootstrap4.min.js"></script>
+<script src="/cp/assets/libs/datatables/dataTables.buttons.min.js"></script>
+<script src="/cp/assets/libs/datatables/buttons.bootstrap4.min.js"></script>
+<script src="/cp/assets/libs/datatables/buttons.html5.min.js"></script>
+<script src="/cp/assets/libs/datatables/buttons.flash.min.js"></script>
+<script src="/cp/assets/libs/datatables/buttons.print.min.js"></script>
+<script src="/cp/assets/libs/datatables/dataTables.keyTable.min.js"></script>
+<script src="/cp/assets/libs/datatables/dataTables.select.min.js"></script>
+<script src="/cp/assets/libs/pdfmake/pdfmake.min.js"></script>
+<script src="/cp/assets/libs/pdfmake/vfs_fonts.js"></script>
+<script src="/cp/assets/js/pages/datatables.init.js"></script>
+<script src="/cp/assets/js/app.min.js"></script>
+<script src="/cp/assets/js/cp-app.js"></script>
+<script src="/cp/assets/libs/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
+<script src="/cp/assets/libs/switchery/switchery.min.js"></script>
+<script src="/cp/assets/libs/multiselect/jquery.multi-select.js"></script>
+<script src="/cp/assets/libs/jquery-quicksearch/jquery.quicksearch.min.js"></script>
+<script src="/cp/assets/libs/select2/select2.min.js"></script>
+<script src="/cp/assets/libs/bootstrap-select/bootstrap-select.min.js"></script>
+<script src="/cp/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
+<script src="/cp/assets/libs/jquery-mask-plugin/jquery.mask.min.js"></script>
+<script src="/cp/assets/js/pages/form-advanced.init.js"></script>
+
+</body>
+</html>

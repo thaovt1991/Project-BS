@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Update Category Group</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/image/favicon.ico">
+
+    <!-- Plugins css-->
+    <link href="/cp/assets/libs/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+    <link href="/cp/assets/libs/switchery/switchery.min.css" rel="stylesheet" type="text/css">
+    <link href="/cp/assets/libs/multiselect/multi-select.css" rel="stylesheet" type="text/css">
+    <link href="/cp/assets/libs/select2/select2.min.css" rel="stylesheet" type="text/css">
+    <link href="/cp/assets/libs/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" type="text/css">
+    <link href="/cp/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet">
+
+    <!-- App css -->
+    <link href="/cp/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/cp/assets/css/icons.min.css" rel="stylesheet" type="text/css">
+    <link href="/cp/assets/css/app.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom css -->
+    <link href="/cp/assets/css/errors.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+<!-- Begin page -->
+<div id="wrapper">
+
+    <!-- Topbar Start -->
+    <th:block th:replace="/cp/layout/top-bar"/>
+    <!-- end Topbar -->
+
+    <!-- ========== Left Sidebar Start ========== -->
+    <th:block th:replace="/cp/layout/left-side-menu"/>
+    <!-- Left Sidebar End -->
+
+    <!-- ============================================================== -->
+    <!-- Start Page Content here -->
+    <!-- ============================================================== -->
+
+    <div class="content-page">
+        <div class="content">
+
+            <!-- Start Content-->
+            <div class="container-fluid">
+
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="/cp">MainMenu</a></li>
+                                    <li class="breadcrumb-item active">CategoryGroup</li>
+                                </ol>
+                            </div>
+                            <h4 class="page-title">Update category group</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card-box">
+                            <a href="..">
+                                <button class="btn btn-success waves-effect waves-light">
+                                    <i class="fas fa-arrow-alt-circle-left"></i> Back to list
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card-box">
+                            <h4 class="header-title">Group information</h4>
+
+                            <form th:object="${categoryGroup}" method="post">
+                                <div class="form-group">
+                                    <label class="col-form-label">Name</label>
+                                    <input type="text" th:field="*{name}" class="form-control" placeholder="Digital Cameras...">
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">Category name</label>
+                                    <select th:field="*{category}" class="selectpicker show-tick" data-style="btn-light">
+                                        <th:block th:each="item : ${categories}">
+                                            <option th:value="${item.id}" th:text="${item.name}"></option>
+                                        </th:block>
+                                    </select>
+                                </div>
+
+                                <th:block th:if="!${error}">
+                                    <div class="col-md-12">
+                                        <button type="submit" class="btn btn-primary mt-3">
+                                            <i class="fas fa-pencil-alt"></i> Update
+                                        </button>
+                                    </div>
+                                </th:block>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!-- container -->
+
+        </div> <!-- content -->
+
+        <!-- Footer Start -->
+        <th:block th:replace="/cp/layout/footer"/>
+        <!-- end Footer -->
+
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- End Page content -->
+    <!-- ============================================================== -->
+
+
+</div>
+<!-- END wrapper -->
+
+<!-- Right Sidebar -->
+<th:block th:replace="/cp/layout/right-bar"/>
+<!-- /Right-bar -->
+
+<!-- Right bar overlay-->
+<div class="rightbar-overlay"></div>
+
+<!-- Vendor js -->
+<script src="/cp/assets/js/vendor.min.js"></script>
+
+<!-- Plugins Js -->
+<script src="/cp/assets/libs/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
+<script src="/cp/assets/libs/switchery/switchery.min.js"></script>
+<script src="/cp/assets/libs/multiselect/jquery.multi-select.js"></script>
+<script src="/cp/assets/libs/jquery-quicksearch/jquery.quicksearch.min.js"></script>
+<script src="/cp/assets/libs/select2/select2.min.js"></script>
+<script src="/cp/assets/libs/bootstrap-select/bootstrap-select.min.js"></script>
+<script src="/cp/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
+<script src="/cp/assets/libs/jquery-mask-plugin/jquery.mask.min.js"></script>
+
+<!-- init js -->
+<script src="/cp/assets/js/pages/form-advanced.init.js"></script>
+
+<!-- App js -->
+<script src="/cp/assets/js/app.min.js"></script>
+
+<!--<th:block th:replace="/cp/layout/script"/>-->
+
+<div class="footer-error">
+    <div id="message-alert">
+        <th:block th:if="${script}">
+            <div class="alert-danger">
+                <h5>Please correct errors below:</h5>
+                <ul>
+                    <li th:each="err : ${#fields.errors('categoryGroup.*')}" th:text="${err}"></li>
+                </ul>
+            </div>
+        </th:block>
+        <th:block th:if="${success}">
+            <div class="alert-success">
+                <h5><span th:text="${success}"></span></h5>
+            </div>
+            <span id="close">X</span>
+            <script th:inline="javascript">
+                $("#close").on("click", function () {
+                    $(".footer-error").css("height", 0);
+                    $("#message-alert").empty();
+                });
+
+                $(".alert-success").fadeTo(5000, 500).fadeOut(1000, function () {
+                    $(".footer-error").css("height", 0);
+                    $("#message-alert").empty();
+                });
+            </script>
+        </th:block>
+        <th:block th:if="${error}">
+            <div class="alert-danger">
+                <ul>
+                    <li th:text="${error}"></li>
+                </ul>
+            </div>
+        </th:block>
+    </div>
+</div>
+
+</body>
+</html>

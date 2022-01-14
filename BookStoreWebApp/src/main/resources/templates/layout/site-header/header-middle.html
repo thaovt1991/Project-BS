@@ -1,0 +1,82 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<th:block th:fragment="header-middle">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-3">
+                <a href="/" class="site-brand">
+<!--                    <img src="/assets/image/logo.png" alt="">-->
+                    <img src="/assets/image/logoProject.png" alt="" width="100%" height="100%">
+
+                </a>
+            </div>
+            <div class="col-lg-5">
+                <div class="header-search-block">
+                    <input type="text" placeholder="Search entire store here">
+                    <button>Search</button>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="main-navigation flex-lg-right">
+                    <div class="cart-widget">
+<!--                        <div class="login-block">-->
+<!--                            <a href="login-register.html" class="font-weight-bold">Login</a> <br>-->
+<!--                            <span>or</span><a href="login-register.html">Register</a>-->
+<!--                        </div>-->
+
+                        <th:block th:if ="!${username}">
+                            <div class="login-block">
+                                <a href="/login-register.html" class="font-weight-bold">Login</a> <br>
+                                <span>or</span><a href="/login-register.html">Register</a>
+                            </div>
+                        </th:block>
+
+                        <th:block th:if ="${username}">
+                            <div class="login-block">
+                                <a href="/my-account.html" class="font-weight-bold" id="customer-login" th:data-id="${customer.getId()}" th:text="${customer.name}"></a> <br>
+                                <a href="/logout-customer.html" >Logout</a>
+                            </div>
+                        </th:block>
+                        <div class="cart-block">
+                            <div class="cart-total">
+											<span class="text-number">
+												1
+											</span>
+                                <span class="text-item">
+												Shopping Cart
+											</span>
+                                <span class="price">
+												£0.00
+												<i class="fas fa-chevron-down"></i>
+											</span>
+                            </div>
+                            <div class="cart-dropdown-block">
+<!--                                <div class=" single-cart-block ">-->
+<!--                                    <div class="cart-product">-->
+<!--                                        <a href="product-details.html" class="image">-->
+<!--                                            <img src="image/products/cart-product-1.jpg" alt="">-->
+<!--                                        </a>-->
+<!--                                        <div class="content">-->
+<!--                                            <h3 class="title"><a href="product-details.html">Kodak PIXPRO-->
+<!--                                                Astro Zoom AZ421 16 MP</a></h3>-->
+<!--                                            <p class="price"><span class="qty">1 ×</span> £87.34</p>-->
+<!--                                            <button class="cross-btn"><i class="fas fa-times"></i></button>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+                                <div class=" single-cart-block ">
+                                    <div class="btn-block">
+                                        <a href="cart.html" class="btn">View Cart <i
+                                                class="fas fa-chevron-right"></i></a>
+                                        <a href="checkout.html" class="btn btn--primary">Check Out <i
+                                                class="fas fa-chevron-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- @include('menu.htm') -->
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
