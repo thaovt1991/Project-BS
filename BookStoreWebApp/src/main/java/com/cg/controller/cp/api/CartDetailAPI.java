@@ -19,11 +19,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -67,11 +65,53 @@ public class CartDetailAPI {
         try {
             Cart cart = cartService.findCartsByCustomer(customerOptional.get());
             Product product = productOptional.get();
-            CartDetail cartDetail = cartDetailDTO.toCartDetail(cart, product);
+
+            CartDetail cartDetail = cartDetailsService.findCartDetailByProductAndAndDeletedIsFalse(product);
+
+            if(cartDetail !=null){
+             int quantityNew = cartDetailDTO.getQuantity() + cartDetail.getQuantity() ;
+             cartDetail.setQuantity(quantityNew);
+            }else{
+                 cartDetail = cartDetailDTO.toCartDetail(cart,product) ;
+            }
             cartDetailsService.save(cartDetail);
             return new ResponseEntity<>(cartDetail, HttpStatus.CREATED);
         } catch (DataInputException e) {
             throw new DataInputException("Cart detail creation information is not valid, please check the information again");
         }
     }
+
+    @GetMapping("/cart/{id}")
+    public ResponseEntity<List<?>> showAllCart(@PathVariable Long id){
+        Optional<Cart> cartOptional = cartService.findById(id) ;
+        if(!cartOptional.isPresent()){
+            throw new DataInputException("Cart not exits !");
+        }
+        try {
+            List<CartDetailDTO> cartDetailDTOList = cartDetailsService.findAllCartDetailDTOByCartAndDeletedFalse(cartOptional.get());
+            return new ResponseEntity<>(cartDetailDTOList, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping("/remove/{id}")
+    public ResponseEntity<List<?>> showAllCartAfterRemove(@PathVariable Long id){
+        Optional<CartDetail> cartDetailOptional = cartDetailsService.findById(id) ;
+        if(!cartDetailOptional.isPresent()){
+            throw new DataInputException("Cart not exits !");
+        }
+        try {
+            CartDetail cartDetail = cartDetailOptional.get() ;
+            cartDetail.setDeleted(true);
+            cartDetailsService.save(cartDetail) ;
+            Cart cart = cartDetail.getCart() ;
+            List<CartDetailDTO> cartDetailDTOList = cartDetailsService.findAllCartDetailDTOByCartAndDeletedFalse(cart);
+            return new ResponseEntity<>(cartDetailDTOList, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+
 }

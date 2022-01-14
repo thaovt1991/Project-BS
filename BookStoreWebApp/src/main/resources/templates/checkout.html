@@ -751,9 +751,19 @@ Footer Area
             $.notify("Order success , please waiting store accept  ! Thank you !", "success");
             setTimeout(function () {
                 window.location.href = "/my-account.html";
-            }, 1000);
+            }, 2000);
         }).fail((jqXHR) => {
-            $.notify("Please check the information again", "error");
+            if (jqXHR.responseJSON) {
+                if (jqXHR.responseJSON.message) {
+                    $.notify(jqXHR.responseJSON.message, "error");
+                } else {
+                    $.each(jqXHR.responseJSON, function (key, value) {
+                        $.notify(value, "error");
+                    });
+                }
+            } else {
+                $.notify("Something went wrong, please try again", "error");
+            }
         });
         })
     };

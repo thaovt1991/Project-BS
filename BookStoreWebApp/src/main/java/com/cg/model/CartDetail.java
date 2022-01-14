@@ -1,5 +1,6 @@
 package com.cg.model;
 
+import com.cg.model.dto.CartDetailDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -40,4 +41,17 @@ public class CartDetail extends BaseEntity{
         orderDetail.setProductId(product.getId());
         return orderDetail ;
     }
+
+
+    public CartDetailDTO cartDetailDTO(){
+        CartDetailDTO cartDetailDTO = new CartDetailDTO() ;
+        cartDetailDTO.setId(id) ;
+        cartDetailDTO.setCartId(cart.getId()) ;
+        cartDetailDTO.setQuantity(quantity) ;
+        cartDetailDTO.setProductImage(product.getAvatar()) ;
+        cartDetailDTO.setProductLastPrice(product.getLastPrice());
+        cartDetailDTO.setProductName(product.getName()) ;
+        return cartDetailDTO ;
+    }
+
 }

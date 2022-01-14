@@ -190,6 +190,8 @@ public class HomeController {
 
             modelAndView.addObject("username", getPrincipal());
             modelAndView.addObject("customer", customer);
+            Cart cart = cartService.findCartsByCustomer(customer) ;
+            modelAndView.addObject("cart", cart);
 
         }
         modelAndView.addObject("title", title);

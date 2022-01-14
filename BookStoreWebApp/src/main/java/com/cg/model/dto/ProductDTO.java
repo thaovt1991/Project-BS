@@ -65,7 +65,7 @@ public class ProductDTO {
 
     private String fileProductId;
 
-    @NotBlank(message = "Hay upload anh cua san pham")
+    @NotNull(message = "Hay upload anh cua san pham")
     private MultipartFile file;
 
     private String fileType;

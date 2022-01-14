@@ -2,6 +2,8 @@ package com.cg.service.cart_details;
 
 import com.cg.model.Cart;
 import com.cg.model.CartDetail;
+import com.cg.model.Product;
+import com.cg.model.dto.CartDetailDTO;
 import com.cg.repository.CartDetailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,4 +47,13 @@ public class CartDetailServiceImpl implements CartDetailService {
     public List<CartDetail> findCartDetailByCartAndDeletedIsFalse(Cart cart) {
         return cartDetailRepository.findCartDetailByCartAndDeletedIsFalse(cart);
     }
+
+    @Override
+    public List<CartDetailDTO> findAllCartDetailDTOByCartAndDeletedFalse(Cart cart) {
+        return cartDetailRepository.findAllCartDetailDTOByCartAndDeletedFalse(cart);
+    }
+
+    public CartDetail findCartDetailByProductAndAndDeletedIsFalse(Product product){
+        return cartDetailRepository.findCartDetailByProductAndAndDeletedIsFalse(product) ;
+    };
 }

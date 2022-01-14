@@ -2,17 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title>Pustok - Book Store HTML Template</title>
-    <th:block th:include="layout/head" />
+    <th:block th:include="layout/head"/>
 </head>
 
 <body>
 <div class="site-wrapper" id="top">
     <div class="site-header header-2 mb--20 d-none d-lg-block">
         <div class="header-middle pt--10 pb--10">
-            <th:block th:include="layout/site-header/header-middle" />
+            <th:block th:include="layout/site-header/header-middle"/>
         </div>
         <div class="header-bottom bg-primary">
-            <th:block th:include="layout/site-header/header-bottom" />
+            <th:block th:include="layout/site-header/header-bottom"/>
         </div>
     </div>
     <div class="site-mobile-menu">
@@ -21,7 +21,7 @@
                 <div class="row align-items-sm-end align-items-center">
                     <div class="col-md-4 col-7">
                         <a href="/" class="site-brand">
-<!--                            <img src="/assets/image/logo.png" alt="">-->
+                            <!--                            <img src="/assets/image/logo.png" alt="">-->
                             <img src="/assets/image/logoProject.png" alt="" width="100%" height="100%">
                         </a>
                     </div>
@@ -173,12 +173,12 @@
                         <ul class="mobile-menu main-mobile-menu">
                             <li class="menu-item-has-children">
                                 <a href="/">Home</a>
-<!--                                <ul class="sub-menu">-->
-<!--                                    <li> <a href="index.html">Home One</a></li>-->
-<!--                                    <li> <a href="index-2.html">Home Two</a></li>-->
-<!--                                    <li> <a href="index-3.html">Home Three</a></li>-->
-<!--                                    <li> <a href="index-4.html">Home Four</a></li>-->
-<!--                                </ul>-->
+                                <!--                                <ul class="sub-menu">-->
+                                <!--                                    <li> <a href="index.html">Home One</a></li>-->
+                                <!--                                    <li> <a href="index-2.html">Home Two</a></li>-->
+                                <!--                                    <li> <a href="index-3.html">Home Three</a></li>-->
+                                <!--                                    <li> <a href="index-4.html">Home Four</a></li>-->
+                                <!--                                </ul>-->
                             </li>
                             <li class="menu-item-has-children">
                                 <a href="#">Blog</a>
@@ -286,8 +286,8 @@
                         <li class="menu-item-has-children">
                             <a href="#">Currency - USD $ <i class="fas fa-angle-down"></i></a>
                             <ul class="sub-menu">
-                                <li> <a href="cart.html">USD $</a></li>
-                                <li> <a href="checkout.html">EUR €</a></li>
+                                <li><a href="cart.html">USD $</a></li>
+                                <li><a href="checkout.html">EUR €</a></li>
                             </ul>
                         </li>
                         <li class="menu-item-has-children">
@@ -331,7 +331,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-4">
                     <a href="/" class="site-brand">
-<!--                        <img src="/assets/image/logo.png" alt="">-->
+                        <!--                        <img src="/assets/image/logo.png" alt="">-->
                         <img src="/assets/image/logoProject.png" alt="" width="100%" height="100%">
                     </a>
                 </div>
@@ -340,15 +340,15 @@
                         <ul class="main-menu menu-right ">
                             <li class="menu-item ">
                                 <a href="/">Home
-<!--                                    <i-->
-<!--                                        class="fas fa-chevron-down dropdown-arrow"></i>-->
+                                    <!--                                    <i-->
+                                    <!--                                        class="fas fa-chevron-down dropdown-arrow"></i>-->
                                 </a>
-<!--                                <ul class="sub-menu">-->
-<!--                                    <li> <a href="index.html">Home One</a></li>-->
-<!--                                    <li> <a href="index-2.html">Home Two</a></li>-->
-<!--                                    <li> <a href="index-3.html">Home Three</a></li>-->
-<!--                                    <li> <a href="index-4.html">Home Four</a></li>-->
-<!--                                </ul>-->
+                                <!--                                <ul class="sub-menu">-->
+                                <!--                                    <li> <a href="index.html">Home One</a></li>-->
+                                <!--                                    <li> <a href="index-2.html">Home Two</a></li>-->
+                                <!--                                    <li> <a href="index-3.html">Home Three</a></li>-->
+                                <!--                                    <li> <a href="index-4.html">Home Four</a></li>-->
+                                <!--                                </ul>-->
                             </li>
                             <!-- Shop -->
                             <li class="menu-item has-children mega-menu">
@@ -364,7 +364,7 @@
                                         </ul>
                                     </li>
                                     <li class="cus-col-25">
-                                        <h3 class="menu-title"> <a href="javascript:void(0)">Shop List</a></h3>
+                                        <h3 class="menu-title"><a href="javascript:void(0)">Shop List</a></h3>
                                         <ul class="mega-single-block">
                                             <li><a href="shop-list.html">Fullwidth</a></li>
                                             <li><a href="shop-list-left-sidebar.html">left Sidebar</a></li>
@@ -372,7 +372,7 @@
                                         </ul>
                                     </li>
                                     <li class="cus-col-25">
-                                        <h3 class="menu-title"> <a href="javascript:void(0)">Product Details 1</a>
+                                        <h3 class="menu-title"><a href="javascript:void(0)">Product Details 1</a>
                                         </h3>
                                         <ul class="mega-single-block">
                                             <li><a href="product-details.html">Product Details Page</a></li>
@@ -484,7 +484,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <form action="#" class="">
+                        <form action="#" class="" id="cart-info" th:data-id="${cart.getId()}">
                             <!-- Cart Table -->
                             <div class="cart-table table-responsive mb--40">
                                 <table class="table">
@@ -499,74 +499,71 @@
                                         <th class="pro-remove"></th>
                                     </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="showListCartDetails">
 
 
-                                    <!-- Product Row -->
-                                    <tr>
-                                        </td>
-                                        <td class="pro-thumbnail"><a href="#"><img
-                                                src="/assets/image/products/product-1.jpg" alt="Product"></a></td>
-                                        <td class="pro-title"><a href="#">Rinosin Glasses</a></td>
-                                        <td class="pro-price"><span>$395.00</span></td>
-                                        <td class="pro-quantity">
-                                            <div class="pro-qty">
-                                                <div class="count-input-block">
-                                                    <input type="number" class="form-control text-center"
-                                                           value="1">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="pro-subtotal"><span>$395.00</span></td>
-                                        <td class="pro-remove"><a href="#"><i class="far fa-trash-alt"></i></a>
-                                    </tr>
-                                    <!-- Product Row -->
-                                    <tr>
-                                        </td>
-                                        <td class="pro-thumbnail"><a href="#"><img
-                                                src="/assets/image/products/product-2.jpg" alt="Product"></a></td>
-                                        <td class="pro-title"><a href="#">Rinosin Glasses</a></td>
-                                        <td class="pro-price"><span>$395.00</span></td>
-                                        <td class="pro-quantity">
-                                            <div class="pro-qty">
-                                                <div class="count-input-block">
-                                                    <input type="number" class="form-control text-center"
-                                                           value="1">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="pro-subtotal"><span>$395.00</span></td>
-                                        <td class="pro-remove"><a href="#"><i class="far fa-trash-alt"></i></a>
-                                    </tr>
-
-
-
-
+                                    <!--                                    &lt;!&ndash; Product Row &ndash;&gt;-->
+                                    <!--                                    <tr>-->
+                                    <!--                                        </td>-->
+                                    <!--                                        <td class="pro-thumbnail"><a href="#"><img-->
+                                    <!--                                                src="/assets/image/products/product-1.jpg" alt="Product"></a></td>-->
+                                    <!--                                        <td class="pro-title"><a href="#">Rinosin Glasses</a></td>-->
+                                    <!--                                        <td class="pro-price"><span>$395.00</span></td>-->
+                                    <!--                                        <td class="pro-quantity">-->
+                                    <!--                                            <div class="pro-qty">-->
+                                    <!--                                                <div class="count-input-block">-->
+                                    <!--                                                    <input type="number" class="form-control text-center"-->
+                                    <!--                                                           value="1">-->
+                                    <!--                                                </div>-->
+                                    <!--                                            </div>-->
+                                    <!--                                        </td>-->
+                                    <!--                                        <td class="pro-subtotal"><span>$395.00</span></td>-->
+                                    <!--                                        <td class="pro-remove"><a href="#"><i class="far fa-trash-alt"></i></a>-->
+                                    <!--                                    </tr>-->
+                                    <!--                                    &lt;!&ndash; Product Row &ndash;&gt;-->
+                                    <!--                                    <tr>-->
+                                    <!--                                        </td>-->
+                                    <!--                                        <td class="pro-thumbnail"><a href="#"><img-->
+                                    <!--                                                src="/assets/image/products/product-2.jpg" alt="Product"></a></td>-->
+                                    <!--                                        <td class="pro-title"><a href="#">Rinosin Glasses</a></td>-->
+                                    <!--                                        <td class="pro-price"><span>$395.00</span></td>-->
+                                    <!--                                        <td class="pro-quantity">-->
+                                    <!--                                            <div class="pro-qty">-->
+                                    <!--                                                <div class="count-input-block">-->
+                                    <!--                                                    <input type="number" class="form-control text-center"-->
+                                    <!--                                                           value="1">-->
+                                    <!--                                                </div>-->
+                                    <!--                                            </div>-->
+                                    <!--                                        </td>-->
+                                    <!--                                        <td class="pro-subtotal"><span>$395.00</span></td>-->
+                                    <!--                                        <td class="pro-remove"><a href="#"><i class="far fa-trash-alt"></i></a>-->
+                                    <!--                                    </tr>-->
 
 
                                     <!-- Discount Row  -->
-                                    <tr>
-                                        <td colspan="6" class="actions">
-                                            <div class="coupon-block">
-                                                <div class="coupon-text">
-                                                    <label for="coupon_code">Coupon:</label>
-                                                    <input type="text" name="coupon_code" class="input-text"
-                                                           id="coupon_code" value="" placeholder="Coupon code">
-                                                </div>
-                                                <div class="coupon-btn">
-                                                    <input type="submit" class="btn btn-outlined"
-                                                           name="apply_coupon" value="Apply coupon">
-                                                </div>
-                                            </div>
-                                            <div class="update-block text-right">
-                                                <input type="submit" class="btn btn-outlined" name="update_cart"
-                                                       value="Update cart">
-                                                <input type="hidden" id="_wpnonce" name="_wpnonce"
-                                                       value="05741b501f"><input type="hidden"
-                                                                                 name="_wp_http_referer" value="/petmark/cart/">
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    <!--                                    <tr>-->
+                                    <!--                                        <td colspan="6" class="actions">-->
+                                    <!--                                            <div class="coupon-block">-->
+                                    <!--                                                <div class="coupon-text">-->
+                                    <!--                                                    <label for="coupon_code">Coupon:</label>-->
+                                    <!--                                                    <input type="text" name="coupon_code" class="input-text"-->
+                                    <!--                                                           id="coupon_code" value="" placeholder="Coupon code">-->
+                                    <!--                                                </div>-->
+                                    <!--                                                <div class="coupon-btn">-->
+                                    <!--                                                    <input type="submit" class="btn btn-outlined"-->
+                                    <!--                                                           name="apply_coupon" value="Apply coupon">-->
+                                    <!--                                                </div>-->
+                                    <!--                                            </div>-->
+                                    <!--                                            <div class="update-block text-right">-->
+                                    <!--                                                <input type="submit" class="btn btn-outlined" name="update_cart"-->
+                                    <!--                                                       value="Update cart">-->
+                                    <!--                                                <input type="hidden" id="_wpnonce" name="_wpnonce"-->
+                                    <!--                                                       value="05741b501f"><input type="hidden"-->
+                                    <!--                                                                                 name="_wp_http_referer"-->
+                                    <!--                                                                                 value="/petmark/cart/">-->
+                                    <!--                                            </div>-->
+                                    <!--                                        </td>-->
+                                    <!--                                    </tr>-->
                                     </tbody>
                                 </table>
                             </div>
@@ -803,9 +800,9 @@
                         <div class="cart-summary">
                             <div class="cart-summary-wrap">
                                 <h4><span>Cart Summary</span></h4>
-                                <p>Sub Total <span class="text-primary">$1250.00</span></p>
+                                <p>Sub Total <span class="text-primary" id="sum-total">$1250.00</span></p>
                                 <p>Shipping Cost <span class="text-primary">$00.00</span></p>
-                                <h2>Grand Total <span class="text-primary">$1250.00</span></h2>
+                                <h2>Grand Total <span class="text-primary" id="sum-total-after">$1250.00</span></h2>
                             </div>
                             <div class="cart-summary-button">
                                 <a href="checkout.html" class="checkout-btn c-btn btn--primary">Checkout</a>
@@ -823,14 +820,148 @@
 Brands Slider
 ===================================== -->
 <section class="section-margin">
-    <th:block th:include="layout/brand-slider" />
+    <th:block th:include="layout/brand-slider"/>
 </section>
 <!--=================================
 Footer Area
 ===================================== -->
-<th:block th:include="layout/footer" />
+<th:block th:include="layout/footer"/>
 
-<th:block th:include="layout/script" />
+<th:block th:include="layout/script"/>
 
+<!--<script src="/assets/js/app.js"></script>-->
+<script src="/assets/js/sweetalert2.min.js"></script>
+<script src="/assets/js/notify-0.4.1.min.js"></script>
+<script>
+    class CartDetail {
+        constructor(id, productImage, productName, productLastPrice, quantity, subTotal) {
+            this.id = id;
+            this.productImage = productImage;
+            this.productName = productName;
+            this.productLastPrice = productLastPrice;
+            this.quantity = quantity;
+            this.subTotal = subTotal;
+        }
+    }
+
+    function showCartDetail(cartDetail) {
+        return `  <tr id="cart_detai_${cartDetail.id}" data-id="${cartDetail.id}">
+                                        </td>
+                                        <td class="pro-thumbnail"><a href="#"><img
+                                                src="${cartDetail.productImage}" alt="Product"></a></td>
+                                        <td class="pro-title"><a href="#">${cartDetail.productName}</a></td>
+                                        // <input type="hidden"  value="${cartDetail.productLastPrice}">
+                                        <td class="pro-price"><span id="product-price-${cartDetail.id}">${cartDetail.productLastPrice}</span></td>
+                                        <td class="pro-quantity">
+                                            <div class="pro-qty">
+                                                <div class="count-input-block">
+                                                    <input type="number" class="form-control text-center"
+                                                        id="quantity-product-${cartDetail.id}"   value="${cartDetail.quantity}" onkeyup="onChange(${cartDetail.id})">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="pro-subtotal"><span id="sub-total-${cartDetail.id}">${cartDetail.subTotal}</span></td>
+                                        <td class="pro-remove"><a  class="pro-remove-cart" href="javascript:void(0)" data-id="${cartDetail.id}" ><i class="far fa-trash-alt"></i></a>
+                                    </tr>`
+    }
+
+    let str_footer = `  <tr>
+                                        <td colspan="6" class="actions">
+                                            <div class="coupon-block">
+                                                <div class="coupon-text">
+                                                    <label for="coupon_code">Coupon:</label>
+                                                    <input type="text" name="coupon_code" class="input-text"
+                                                           id="coupon_code" value="" placeholder="Coupon code">
+                                                </div>
+                                                <div class="coupon-btn">
+                                                    <input type="submit" class="btn btn-outlined"
+                                                           name="apply_coupon" value="Apply coupon">
+                                                </div>
+                                            </div>
+                                            <div class="update-block text-right">
+                                                <input type="submit" class="btn btn-outlined" name="update_cart"
+                                                       value="Update cart">
+                                                <input type="hidden" id="_wpnonce" name="_wpnonce"
+                                                       value="05741b501f"><input type="hidden"
+                                                                                 name="_wp_http_referer"
+                                                                                 value="/petmark/cart/">
+                                            </div>
+                                        </td>
+                                    </tr>`
+
+    function showCart() {
+        let id_cart = $("#cart-info").data("id");
+        console.log(id_cart);
+        $.ajax({
+            type: "GET",
+            url: "/cp/api/cart-detail/cart/" + id_cart,
+        }).done((cdList) => {
+            let str = "";
+            let sumTotal = 0;
+            console.log(cdList)
+            for (let i = 0; i < cdList.length; i++) {
+                let total = cdList[i].quantity * cdList[i].productLastPrice;
+                let cartDetail = new CartDetail(cdList[i].id, cdList[i].productImage, cdList[i].productName, cdList[i].productLastPrice, cdList[i].quantity, total)
+                str += showCartDetail(cartDetail);
+                sumTotal += cartDetail.subTotal;
+            }
+            str += str_footer;
+            $("#showListCartDetails").html(str);
+            $("#sum-total").html(sumTotal);
+            $("#sum-total-after").html(sumTotal); /// co the nhan voi ship
+
+
+            removeCartDetail();
+        }).fail(function () {
+            $.notify("Something went wrong, please try again", "error");
+        })
+    }
+
+
+
+    function removeCartDetail() {
+        $(".pro-remove-cart").on("click", function () {
+           
+            let id_cartDT = $(this).data("id");
+            $.ajax({
+                type: "GET",
+                url: "/cp/api/cart-detail/remove/" + id_cartDT
+            }).done(function (cdList) {
+                let str = "";
+                let sumTotal = 0;
+                console.log(cdList)
+                for (let i = 0; i < cdList.length; i++) {
+                    let total = cdList[i].quantity * cdList[i].productLastPrice;
+                    let cartDetail = new CartDetail(cdList[i].id, cdList[i].productImage, cdList[i].productName, cdList[i].productLastPrice, cdList[i].quantity, total)
+                    str += showCartDetail(cartDetail);
+                    sumTotal += cartDetail.subTotal;
+                }
+                str += str_footer;
+                $("#showListCartDetails").html(str);
+                $("#sum-total").html(sumTotal);
+                $("#sum-total-after").html(sumTotal); /// co the nhan voi ship
+
+                $.notify("Product removed from cart successfully !", "success")
+
+                removeCartDetail();
+            }).fail(function () {
+                $.notify("Something went wrong, please try again", "error");
+            })
+        })
+    }
+
+
+    function onChange(id) {
+        let price = parseInt($("#product-price-" + id).text());
+        console.log(price)
+        let quantity = $("#quantity-product-" + id).val()
+        let total = price * quantity;
+        $("#sub-total-" + id).html(total)
+
+    }
+
+    showCart();
+    removeCartDetail();
+</script>
 </body>
 </html>
